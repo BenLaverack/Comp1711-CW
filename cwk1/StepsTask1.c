@@ -43,6 +43,30 @@ void tokeniseRecord(const char *input, const char *delimiter,
 
 // Complete the main function
 int main() {
+    FITNESS_DATA fitness[100]; // make an array of Fitness data Structs
+    int buffer_size=250;
+    char line[buffer_size];
+    int counter = 0;
 
+    FILE *input=fopen("FitnessData_2023.csv","r");
+    char date[10];
+    char steps[10];
+    char time[10];
+
+    while(fgets(line, buffer_size, input)){
+        tokeniseRecord(line,",",date, time, steps);
+
+        strcpy(fitness[counter].date, date);
+        fitness[counter].steps = atoi(steps);
+        strcpy(fitness[counter].time, time);
+        counter++;
+
+    }
+
+    printf("There are %d lines in the file\n", counter);
+
+    for(int i = 0; i < 3; i++){
+        printf("%s/%s/%d\n", fitness[i].date, fitness[i].time, fitness[i].steps);
+    }
 
 }
