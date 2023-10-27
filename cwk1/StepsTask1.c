@@ -63,7 +63,7 @@ int main() {
 
     }
 
-    printf("There are %d lines in the file\n", counter);
+    printf("Number of records in file: %d\n", counter);
 
     for(int i = 0; i < 3; i++){
         printf("%s/%s/%d\n", fitness[i].date, fitness[i].time, fitness[i].steps);
