@@ -49,16 +49,16 @@ int main() {
     int counter = 0;
 
     FILE *input=fopen("FitnessData_2023.csv","r");
-    char date[10];
+    char date[11];
+    char time[6];
     char steps[10];
-    char time[10];
 
     while(fgets(line, buffer_size, input)){
         tokeniseRecord(line,",",date, time, steps);
 
         strcpy(fitness[counter].date, date);
-        fitness[counter].steps = atoi(steps);
         strcpy(fitness[counter].time, time);
+        fitness[counter].steps = atoi(steps);
         counter++;
 
     }
