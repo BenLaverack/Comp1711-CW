@@ -35,7 +35,7 @@ void tokeniseRecord(const char *input, const char *delimiter,
     // Free the duplicated string
     free(inputCopy);
 
-                    }
+    }
 
 
 int main() {
