@@ -72,11 +72,14 @@ int main() {
                 printf("Enter the filename to be imported: ");
                 scanf("%s", name);
 
-                FILE *input=fopen(name,"r");
-                if (!input){
+                FILE *input;
+                input=fopen(name,"r");
+                // check if the file exists
+                if (input == NULL){
                     printf("Invalid file name detected ");
                 }
-                else {
+                // loops back to the menu if the file is correct
+                else if (input != NULL) {
                     printf("Filename entered correctly, please choose an option:\n");
                 }
 
@@ -92,6 +95,7 @@ int main() {
                     strcpy(fitness[counter].time, time);
                     fitness[counter].steps = atoi(steps);
                     counter++;
+                    // total is used as a counter for amount of structs in the array
                     total++;
                     }
                 
@@ -135,6 +139,10 @@ int main() {
                     mean_total += fitness[counter].steps;
                 }
                 printf("The mean of the steps was: %f\n", (mean_total/total));
+                break;
+
+            case 'f':
+            case 'F':
                 break;
 
             case 'q':
