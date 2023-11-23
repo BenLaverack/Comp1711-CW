@@ -50,7 +50,7 @@ int main() {
     int min_total = 0;
     int max = 0;
     int max_total = 0;
-    float mean_total;
+    int mean_total;
 
     while (1){
         printf("Menu Options:\n");
@@ -76,11 +76,12 @@ int main() {
                 input=fopen(name,"r");
                 // check if the file exists
                 if (input == NULL){
-                    printf("Invalid file name detected ");
+                    printf("Error: Could not find or open the file.\n");
+                    return 1;
                 }
                 // loops back to the menu if the file is correct
                 else if (input != NULL) {
-                    printf("Filename entered correctly, please choose an option:\n");
+                    printf("File successfully loaded.\n");
                 }
 
                 char date[11];
@@ -116,7 +117,7 @@ int main() {
                         min_total = counter;
                     }
                 }
-                printf("The minimum amount of steps was %d, it happened on %s at %s\n", fitness[min_total].steps, fitness[min_total].date, fitness[min_total].time);
+                printf("%s %s\n", fitness[min_total].date, fitness[min_total].time);
                 break;
 
             case 'd':
@@ -129,7 +130,7 @@ int main() {
                         max_total = counter;
                     }
                 }
-                printf("The maximum amount of steps was %d, it happened on %s at %s\n", fitness[max_total].steps, fitness[max_total].date, fitness[max_total].time);
+                printf("%s %s\n", fitness[max_total].date, fitness[max_total].time);
                 break;
 
             case 'e':
@@ -138,7 +139,7 @@ int main() {
                 for (counter = 0; counter < total; counter++){
                     mean_total += fitness[counter].steps;
                 }
-                printf("The mean of the steps was: %f\n", (mean_total/total));
+                printf("Mean step count: %d\n", (mean_total/total));
                 break;
 
             case 'f':
@@ -151,7 +152,7 @@ int main() {
                 break;
 
             default:
-                printf("Invalid Choice\n");
+                printf("Invalid choice. Try again.\n");
                 break;
         }
     }
