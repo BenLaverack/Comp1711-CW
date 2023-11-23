@@ -69,7 +69,7 @@ int main() {
         {
             case 'a':
             case 'A':
-                printf("Enter the filename to be imported: ");
+                printf("Input filename: ");
                 scanf("%s", name);
 
                 FILE *input;
@@ -104,7 +104,7 @@ int main() {
 
             case 'b':
             case 'B':
-                printf("The total number of records in the file is: %d\n", total);
+                printf("Total records: %d\n", total);
                 break;
 
             case 'c':
@@ -117,7 +117,7 @@ int main() {
                         min_total = counter;
                     }
                 }
-                printf("%s %s\n", fitness[min_total].date, fitness[min_total].time);
+                printf("Fewest steps: %s %s\n", fitness[min_total].date, fitness[min_total].time);
                 break;
 
             case 'd':
@@ -130,7 +130,7 @@ int main() {
                         max_total = counter;
                     }
                 }
-                printf("%s %s\n", fitness[max_total].date, fitness[max_total].time);
+                printf("Largest steps: %s %s\n", fitness[max_total].date, fitness[max_total].time);
                 break;
 
             case 'e':
