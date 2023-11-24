@@ -51,6 +51,11 @@ int main() {
     int max = 0;
     int max_total = 0;
     int mean_total;
+    int max_chain_length = 0;
+    int current_chain_length = 0;
+    int max_chain_start_index;
+    int max_chain_end_index;
+    int current_chain_start_index;
 
     while (1){
         printf("Menu Options:\n");
@@ -144,6 +149,26 @@ int main() {
 
             case 'f':
             case 'F':
+                for (counter = 0; counter < total; counter++){
+                    if (fitness[counter].steps > 500){
+                        current_chain_length += 1;
+                        if (current_chain_length == 1){
+                            current_chain_start_index = counter;
+                        }
+                    }
+                    else {
+                        current_chain_length = 0;
+                    }
+
+                    if (current_chain_length > max_chain_length){
+                        max_chain_length = current_chain_length;
+                        max_chain_start_index = current_chain_start_index;
+                        max_chain_end_index = counter;
+                    }
+                }
+                printf("Longest period start: %s %s\n", fitness[max_chain_start_index].date, fitness[max_chain_start_index].time);
+                printf("Longest period end: %s %s\n", fitness[max_chain_end_index].date, fitness[max_chain_end_index].time);
+
                 break;
 
             case 'q':
