@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include "FitnessDataStruct.h"
+#include <math.h>
 
 // Struct moved to header file
 
@@ -144,7 +145,7 @@ int main() {
                 for (counter = 0; counter < total; counter++){
                     mean_total += fitness[counter].steps;
                 }
-                printf("Mean step count: %d\n", (mean_total/total));
+                printf("Mean step count: %d\n", round((mean_total/total)));
                 break;
 
             case 'f':
