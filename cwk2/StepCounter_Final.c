@@ -39,7 +39,7 @@ void tokeniseRecord(const char *input, const char *delimiter,
 
 
 int main() {
-    FITNESS_DATA fitness[100];
+    FITNESS_DATA fitness[200];
     int buffer_size=250;
     char line[buffer_size];
     int counter = 0;
@@ -181,6 +181,4 @@ int main() {
                 break;
         }
     }
-
-    
 }
