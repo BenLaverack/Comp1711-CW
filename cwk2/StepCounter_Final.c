@@ -144,7 +144,7 @@ int main() {
                 for (counter = 0; counter < total; counter++){
                     mean_total += fitness[counter].steps;
                 }
-                printf("Mean step count: %d\n", (mean_total/total));
+                printf("Mean step count: %.0f\n", ((float)mean_total/(float)total));
                 break;
 
             case 'f':
