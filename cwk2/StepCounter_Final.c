@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include "FitnessDataStruct.h"
+#include <math.h>
 
 // Struct moved to header file
 
