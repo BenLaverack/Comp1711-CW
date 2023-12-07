@@ -99,7 +99,7 @@ int main() {
     fptr = fopen(strcat(filename, ".tsv"), "w");
 
     for(int j = total-1; j > 0; j--){
-        fprintf(fptr, "%d\t%s\t%s\n", fitness[j].steps, fitness[j].time, fitness[j].date);
+        fprintf(fptr, "%s\t%s\t%d\n", fitness[j].date, fitness[j].time, fitness[j].steps);
     }
     printf("Data sorted and written to %s\n", filename);
 
