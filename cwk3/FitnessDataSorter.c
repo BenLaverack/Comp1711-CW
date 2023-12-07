@@ -43,9 +43,10 @@ void swap(int *a, int *b)
 
 void swap_char(char *str1, char *str2) 
 { 
-    char *temp = str1; 
-    str1 = str2; 
-    str2 = temp; 
+    char temp[100];
+    strcpy(temp, str1);
+    strcpy(str1, str2);
+    strcpy(str2, temp);
 } 
 
 int main() {
