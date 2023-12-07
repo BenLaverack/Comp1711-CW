@@ -61,12 +61,13 @@ int main() {
     printf("Enter Filename: ");
     scanf("%s", filename);
 
-    if(filename == NULL){
-        printf("Invalid Filename ");
+    FILE *input=fopen(filename, "r");
+
+    if(input == NULL){
+        printf("Invalid file name\n");
         return 1;
     }
 
-    FILE *input=fopen(filename, "r");
     char date[11];
     char time[6];
     char steps[10];
@@ -99,7 +100,7 @@ int main() {
     FILE *fptr;
     fptr = fopen(strcat(filename, ".tsv"), "w");
 
-    for(int j = total-1; j > 0; j--){
+    for(int j = total-1; j >= 0; j--){
         fprintf(fptr, "%s\t%s\t%d\n", fitness[j].date, fitness[j].time, fitness[j].steps);
     }
     printf("Data sorted and written to %s\n", filename);
