@@ -56,8 +56,16 @@ int main() {
     char line[buffer_size];
     int counter = 0;
     int total = 0;
+    char filename[100];
 
-    FILE *input=fopen("FitnessData_2023.csv","r");
+    printf("Enter Filename: ");
+    scanf("%s", filename);
+
+    if(!filename){
+        return 1;
+    }
+
+    FILE *input=fopen(filename,"r");
     char date[11];
     char time[6];
     char steps[10];
@@ -88,10 +96,11 @@ int main() {
     
 
     FILE *fptr;
-    fptr = fopen("FitnessData_2023.csv.tsv", "w");
+    fptr = fopen(strcat(filename, ".tsv"), "w");
 
     for(int j = total-1; j > 0; j--){
         fprintf(fptr, "%d\t%s\t%s\n", fitness[j].steps, fitness[j].time, fitness[j].date);
     }
+    printf("Data sorted and written to %s\n", filename);
 
 }
