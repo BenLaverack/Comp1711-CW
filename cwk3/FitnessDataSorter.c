@@ -61,11 +61,12 @@ int main() {
     printf("Enter Filename: ");
     scanf("%s", filename);
 
-    if(!filename){
+    if(filename == NULL){
+        printf("Invalid Filename ");
         return 1;
     }
 
-    FILE *input=fopen(filename,"r");
+    FILE *input=fopen(filename, "r");
     char date[11];
     char time[6];
     char steps[10];
