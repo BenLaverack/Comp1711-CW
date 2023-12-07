@@ -86,8 +86,12 @@ int main() {
         }
     }
     
-    for(int j = 0; j < total; j++){
-        printf("%d, %s, %s\n", fitness[j].steps, fitness[j].time, fitness[j].date);
+
+    FILE *fptr;
+    fptr = fopen("FitnessData_2023.csv.tsv", "w");
+
+    for(int j = total-1; j > 0; j--){
+        fprintf(fptr, "%d\t%s\t%s\n", fitness[j].steps, fitness[j].time, fitness[j].date);
     }
 
 }
