@@ -7,24 +7,32 @@ typedef struct {
     char date[11];
     char time[6];
     int steps;
-} FitnessData;
+} FITNESS_DATA;
 
 // Function to tokenize a record
-void tokeniseRecord(char *record, char delimiter, char *date, char *time, int *steps) {
-    char *ptr = strtok(record, &delimiter);
-    if (ptr != NULL) {
-        strcpy(date, ptr);
-        ptr = strtok(NULL, &delimiter);
-        if (ptr != NULL) {
-            strcpy(time, ptr);
-            ptr = strtok(NULL, &delimiter);
-            if (ptr != NULL) {
-                *steps = atoi(ptr);
-            }
-        }
+void tokeniseRecord(const char *input, const char *delimiter,
+                    char *date, char *time, char *steps) {
+    // Create a copy of the input string as strtok modifies the string
+    char *inputCopy = strdup(input);
+    
+    // Tokenize the copied string
+    char *token = strtok(inputCopy, delimiter);
+    if (token != NULL) {        strcpy(date, token);
     }
-}
-
+    
+    token = strtok(NULL, delimiter);
+    if (token != NULL) {
+        strcpy(time, token);
+    }
+    
+    token = strtok(NULL, delimiter);
+    if (token != NULL) {
+        strcpy(steps, token);
+    }
+    
+    // Free the duplicated string
+    free(inputCopy);
+                    }
 
 int main() {
 
@@ -51,24 +59,27 @@ int main() {
     }
 
     // bubble sort algorithm
-    int int_temp;
-    char char_temp[100];
+    // bubble sort algorithm
     int i;
     int index;
+    int temp_steps;
+    char temp_time[10];
+    char temp_date[10];
 
     for(i=0;i<total;i++){
         for(index=0;index<total-1;index++){
             if(fitness[index].steps > fitness[index+1].steps){
-                int_temp = fitness[index];
-                fitness[index] = fitness[index+1];
-                fitness[index+1] = char_temp;
+                temp_steps = fitness[index].steps;
+                temp_time = fitness[index].time;
+                temp_date = fitness[index].date;
+                fitness[index].steps = fitness[index+1].steps;
+                fitness[index].date = fitness[index+1].date;
+                fitness[index].time = fitness[index+1].time;
+                fitness[index+1].steps = temp_steps;
+                fitness[index+1].date = temp_date;
+                fitness[index+1].time = temp_time;
             }
         }
     }
-
-    for(i=0;i<total;i++){
-        printf(fitness[i]);
-    }
-
     
 }
