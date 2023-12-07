@@ -34,6 +34,20 @@ void tokeniseRecord(const char *input, const char *delimiter,
     free(inputCopy);
                     }
 
+void swap(int *a, int *b)
+{
+    int temp = *a;
+    *a = *b;
+    *b = temp;
+}
+
+void swap_char(char *str1, char *str2) 
+{ 
+    char *temp = str1; 
+    str1 = str2; 
+    str2 = temp; 
+} 
+
 int main() {
 
     FITNESS_DATA fitness[1000]; // make an array of Fitness data Structs
@@ -59,27 +73,20 @@ int main() {
     }
 
     // bubble sort algorithm
-    // bubble sort algorithm
-    int i;
-    int index;
-    int temp_steps;
-    char temp_time[10];
-    char temp_date[10];
+    int i, index;
 
     for(i=0;i<total;i++){
         for(index=0;index<total-1;index++){
             if(fitness[index].steps > fitness[index+1].steps){
-                temp_steps = fitness[index].steps;
-                temp_time = fitness[index].time;
-                temp_date = fitness[index].date;
-                fitness[index].steps = fitness[index+1].steps;
-                fitness[index].date = fitness[index+1].date;
-                fitness[index].time = fitness[index+1].time;
-                fitness[index+1].steps = temp_steps;
-                fitness[index+1].date = temp_date;
-                fitness[index+1].time = temp_time;
+                swap(&fitness[index].steps, &fitness[index+1].steps);
+                swap_char(fitness[index].date, fitness[index+1].date);
+                swap_char(fitness[index].time, fitness[index+1].time);
             }
         }
     }
     
+    for(int j = 0; j < total; j++){
+        printf("%d, %s, %s\n", fitness[j].steps, fitness[j].time, fitness[j].date);
+    }
+
 }
