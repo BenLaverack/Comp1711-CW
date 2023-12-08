@@ -57,14 +57,17 @@ void swap_char(char *str1, char *str2)
 int areAllDigits(int number) {
 
     char str[20];
+    // breaks the input down into an array of chars
     snprintf(str, sizeof(str), "%d", number);
 
     for (int i = 0; str[i] != '\0'; i++) {
-        if (!isdigit(str[i])) {
+        if (isdigit(str[i])) {
             return 0;
         }
+        else{
+            return 1;
+        }
     }
-    return 1;
 }
 
 int main() {
