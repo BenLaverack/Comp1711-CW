@@ -62,9 +62,8 @@ int areAllDigits(int number) {
 
     for (int i = 0; str[i] != '\0'; i++) {
         if (isdigit(str[i])) {
-            return 0;
         }
-        else{
+        else {
             return 1;
         }
     }
