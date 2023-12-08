@@ -34,6 +34,7 @@ void tokeniseRecord(const char *input, const char *delimiter,
     free(inputCopy);
                     }
 
+// function written for bubble sort
 void swap(int *a, int *b)
 {
     int temp = *a;
@@ -41,6 +42,7 @@ void swap(int *a, int *b)
     *b = temp;
 }
 
+// function written for bubble sort
 void swap_char(char *str1, char *str2) 
 { 
     char temp[100];
@@ -93,6 +95,24 @@ int main() {
                 swap_char(fitness[index].date, fitness[index+1].date);
                 swap_char(fitness[index].time, fitness[index+1].time);
             }
+        }
+    }
+
+    // check for errors in the file
+    for(i=0;i<total;i++){
+
+        if(strlen(fitness[i].date) > 10){
+            return 1;
+        }
+        if(strlen(fitness[i].time) > 5){
+            return 1;
+        }
+
+        if(strchr(fitness[i].date, '-') == NULL){
+            return 1;
+        }
+        if(strchr(fitness[i].time, ':') == NULL){
+            return 1;
         }
     }
     
