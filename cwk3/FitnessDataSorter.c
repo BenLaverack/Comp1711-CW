@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <ctype.h>
 
 // Define the struct for the fitness data
 typedef struct {
@@ -50,6 +51,21 @@ void swap_char(char *str1, char *str2)
     strcpy(str1, str2);
     strcpy(str2, temp);
 } 
+
+
+// write a function to determine if a series of chars are digits
+int areAllDigits(int number) {
+
+    char str[20];
+    snprintf(str, sizeof(str), "%d", number);
+
+    for (int i = 0; str[i] != '\0'; i++) {
+        if (!isdigit(str[i])) {
+            return 0;
+        }
+    }
+    return 1;
+}
 
 int main() {
 
@@ -101,6 +117,7 @@ int main() {
     // check for errors in the file
     for(i=0;i<total;i++){
 
+        // check that date and time are the correct lengths
         if(strlen(fitness[i].date) != 10){
             return 1;
         }
@@ -108,12 +125,17 @@ int main() {
             return 1;
         }
 
-        if(strchr(fitness[i].date, '-') == NULL){
+        // check that date and time are in the correct format
+        if(fitness[i].date[4] != '-' || fitness[i].date[7] != '-'){
             return 1;
         }
-        if(strchr(fitness[i].time, ':') == NULL){
+        if(fitness[i].time[2] != ':'){
             return 1;
         }
+
+        areAllDigits(fitness[i].steps);
+
+        
     }
     
 
