@@ -101,10 +101,10 @@ int main() {
     // check for errors in the file
     for(i=0;i<total;i++){
 
-        if(strlen(fitness[i].date) > 10){
+        if(strlen(fitness[i].date) != 10){
             return 1;
         }
-        if(strlen(fitness[i].time) > 5){
+        if(strlen(fitness[i].time) != 5){
             return 1;
         }
 
