@@ -70,6 +70,14 @@ int areAllDigits(int number) {
     }
 }
 
+int allAreDigitsStr(char * character) {
+    for (int i = 0; character[i] != '\0'; i++) {
+        if (!isdigit(character[i])) {
+            return 1;
+        }
+    }
+}
+
 int main() {
 
     FITNESS_DATA fitness[1000]; // make an array of Fitness data Structs
@@ -136,14 +144,27 @@ int main() {
             return 1;
         }
 
+        char brokenDate[10];
+        char * token = strtok(brokenDate, "-");
+        while (token != NULL){
+            allAreDigitsStr(token);
+            token = strtok(NULL, "-");
+        }
+
+        char brokenTime[10];
+        char * token2 = strtok(brokenTime, ":");
+        while (token2 != NULL){
+            allAreDigitsStr(token);
+            token2 = strtok(NULL, ":");
+        }
+
         if(areAllDigits(fitness[i].steps) == 0){
         }
         else {
             return 1;
         }
-
-        
     }
+    
     
 
     FILE *fptr;
