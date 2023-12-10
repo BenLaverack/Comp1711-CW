@@ -61,10 +61,11 @@ int areAllDigits(int number) {
     snprintf(str, sizeof(str), "%d", number);
 
     for (int i = 0; str[i] != '\0'; i++) {
-        if (isdigit(str[i])) {
+        if (!isdigit(str[i])) {
+            return 1;
         }
         else {
-            return 1;
+            return 0;
         }
     }
 }
@@ -135,7 +136,11 @@ int main() {
             return 1;
         }
 
-        areAllDigits(fitness[i].steps);
+        if(areAllDigits(fitness[i].steps) == 0){
+        }
+        else {
+            return 1;
+        }
 
         
     }
