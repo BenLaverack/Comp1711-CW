@@ -163,7 +163,7 @@ int main() {
         }
 
         // check that all of the characters in steps are digits
-        if(areAllDigits(fitness[i].steps) == 0 && fitness[i].steps < 10000){
+        if(areAllDigits(fitness[i].steps) == 0 && fitness[i].steps < 10000 && fitness[i].steps >= 0){
         }
         else {
             return 1;
