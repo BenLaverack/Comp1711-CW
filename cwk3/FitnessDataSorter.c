@@ -35,7 +35,7 @@ void tokeniseRecord(const char *input, const char *delimiter,
     free(inputCopy);
                     }
 
-// function written for bubble sort
+// function written for bubble sort to swap the position of two integers
 void swap(int *a, int *b)
 {
     int temp = *a;
@@ -43,7 +43,7 @@ void swap(int *a, int *b)
     *b = temp;
 }
 
-// function written for bubble sort
+// function written for bubble sort to swap two characters
 void swap_char(char *str1, char *str2) 
 { 
     char temp[100];
@@ -144,21 +144,26 @@ int main() {
             return 1;
         }
 
+        // split the date up
         char brokenDate[10];
         char * token = strtok(brokenDate, "-");
+        // check that all of the characters in the data are digits
         while (token != NULL){
             allAreDigitsStr(token);
             token = strtok(NULL, "-");
         }
 
         char brokenTime[10];
+        // split up the time
         char * token2 = strtok(brokenTime, ":");
         while (token2 != NULL){
+            // check that all of the characters in the time are digits
             allAreDigitsStr(token);
             token2 = strtok(NULL, ":");
         }
 
-        if(areAllDigits(fitness[i].steps) == 0){
+        // check that all of the characters in steps are digits
+        if(areAllDigits(fitness[i].steps) == 0 && fitness[i].steps < 10000){
         }
         else {
             return 1;
@@ -166,10 +171,11 @@ int main() {
     }
     
     
-
     FILE *fptr;
+    // add '.tsv' to the filename and open it
     fptr = fopen(strcat(filename, ".tsv"), "w");
 
+    // write the data to the file
     for(int j = total-1; j >= 0; j--){
         fprintf(fptr, "%s\t%s\t%d\n", fitness[j].date, fitness[j].time, fitness[j].steps);
     }
