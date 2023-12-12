@@ -168,6 +168,10 @@ int main() {
         else {
             return 1;
         }
+
+        if(fitness[i].steps == '\0'){
+            return 1;
+        }
     }
     
     
